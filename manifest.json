@@ -1,7 +1,12 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "No Pinterest Results",
   "description": "Blocks Google search results from Pinterest",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
   "author": "Veikko Lehmuskorpi",
   "homepage_url": "https://github.com/VeikkoLehmuskorpi/no-pinterest-results",
   "background": {
