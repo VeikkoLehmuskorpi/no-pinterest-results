@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "name": "No Pinterest Results",
+  "description": "Blocks Google search results from Pinterest",
+  "author": "Veikko Lehmuskorpi",
+  "homepage_url": "https://github.com/VeikkoLehmuskorpi/no-pinterest-results",
+  "background": {
+    "scripts": ["src/background.js"],
+    "persistent": true
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://www.google.com/search?*"
+  ],
+  "manifest_version": 2
+}
