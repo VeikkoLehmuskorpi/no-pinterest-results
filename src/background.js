@@ -7,14 +7,20 @@ chrome.webRequest.onBeforeRequest.addListener(
     const pinterestBlock = "-site:pinterest.*";
 
     // Abort if url already contains Pinterest blocking
-    if (url.match(pinterestBlock)) return { redirectUrl: url };
+    if (
+      url.includes(encodeURIComponent(pinterestBlock)) ||
+      url.includes(pinterestBlock)
+    ) {
+      return { redirectUrl: url };
+    }
 
     // Find the search query
     const query = url.match(/q=([^&]*&)/)[0].slice(0, -1);
 
     // Replace the URL with the modified query
-    const modifiedQuery = `${query} ${pinterestBlock}&`;
+    const modifiedQuery = encodeURI(`${query} ${pinterestBlock}`);
     const modifiedUrl = url.replace(query, modifiedQuery);
+
     return { redirectUrl: modifiedUrl };
   },
   {
