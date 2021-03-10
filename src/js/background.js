@@ -49,7 +49,15 @@ chrome.browserAction.onClicked.addListener(function (_tab) {
   });
   chrome.browserAction.setIcon({
     path: isEnabled
-      ? "../img/icons/icon16.png"
-      : "../img/icons/icon16-disabled.png",
+      ? {
+          16: "src/img/icons/icon16.png",
+          48: "src/img/icons/icon48.png",
+          128: "src/img/icons/icon128.png",
+        }
+      : {
+          16: "src/img/icons/icon16-disabled.png",
+          48: "src/img/icons/icon48-disabled.png",
+          128: "src/img/icons/icon128-disabled.png",
+        },
   });
 });
