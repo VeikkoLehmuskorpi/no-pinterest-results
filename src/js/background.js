@@ -36,3 +36,20 @@ chrome.webRequest.onBeforeRequest.addListener(
   },
   ["blocking"]
 );
+
+/**
+ * Toggles the extension state when the browser action icon is clicked
+ */
+chrome.browserAction.onClicked.addListener(function (_tab) {
+  chrome.extension.getBackgroundPage().enabled = !chrome.extension.getBackgroundPage()
+    .enabled;
+  const isEnabled = chrome.extension.getBackgroundPage().enabled;
+  chrome.browserAction.setTitle({
+    title: `Pinterest blocking is ${isEnabled ? "ENABLED" : "DISABLED"}`,
+  });
+  chrome.browserAction.setIcon({
+    path: isEnabled
+      ? "../img/icons/icon16.png"
+      : "../img/icons/icon16-disabled.png",
+  });
+});

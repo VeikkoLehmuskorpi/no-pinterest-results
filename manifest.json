@@ -7,15 +7,11 @@
   "description": "Blocks Google search results from Pinterest",
   "homepage_url": "https://github.com/VeikkoLehmuskorpi/no-pinterest-results",
   "icons": {
-    "16": "assets/icon16.png",
-    "48": "assets/icon48.png",
-    "128": "assets/icon128.png"
+    "16": "src/img/icons/icon16.png",
+    "48": "src/img/icons/icon48.png",
+    "128": "src/img/icons/icon128.png"
   },
-  "browser_action": {
-    "default_icon": "assets/icon16.png",
-    "default_title": "No Pinterest Results",
-    "default_popup": "src/html/popup.html"
-  },
+  "browser_action": {},
   "manifest_version": 2,
   "name": "No Pinterest Results",
   "permissions": [
