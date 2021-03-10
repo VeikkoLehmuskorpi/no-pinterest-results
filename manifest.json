@@ -2,15 +2,16 @@
   "author": "Veikko Lehmuskorpi",
   "background": {
     "persistent": true,
-    "scripts": ["src/background.js"]
+    "scripts": ["src/js/background.js"]
   },
   "description": "Blocks Google search results from Pinterest",
   "homepage_url": "https://github.com/VeikkoLehmuskorpi/no-pinterest-results",
   "icons": {
-    "16": "assets/icon16.png",
-    "48": "assets/icon48.png",
-    "128": "assets/icon128.png"
+    "16": "src/img/icons/icon16.png",
+    "48": "src/img/icons/icon48.png",
+    "128": "src/img/icons/icon128.png"
   },
+  "browser_action": {},
   "manifest_version": 2,
   "name": "No Pinterest Results",
   "permissions": [
@@ -18,5 +19,5 @@
     "webRequestBlocking",
     "*://www.google.com/search?*"
   ],
-  "version": "0.1.3"
+  "version": "0.2.0"
 }

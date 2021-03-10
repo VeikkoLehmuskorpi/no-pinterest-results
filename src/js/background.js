@@ -4,6 +4,10 @@
  */
 chrome.webRequest.onBeforeRequest.addListener(
   function ({ url }) {
+    // Check if the extension is in enabled state
+    const isEnabled = chrome.extension.getBackgroundPage().enabled;
+    if (!isEnabled) return;
+
     const pinterestBlock = "-site:pinterest.*";
 
     // Get the original search query
@@ -32,3 +36,28 @@ chrome.webRequest.onBeforeRequest.addListener(
   },
   ["blocking"]
 );
+
+/**
+ * Toggles the extension state when the browser action icon is clicked
+ */
+chrome.browserAction.onClicked.addListener(function (_tab) {
+  chrome.extension.getBackgroundPage().enabled = !chrome.extension.getBackgroundPage()
+    .enabled;
+  const isEnabled = chrome.extension.getBackgroundPage().enabled;
+  chrome.browserAction.setTitle({
+    title: `Pinterest blocking is ${isEnabled ? "ENABLED" : "DISABLED"}`,
+  });
+  chrome.browserAction.setIcon({
+    path: isEnabled
+      ? {
+          16: "src/img/icons/icon16.png",
+          48: "src/img/icons/icon48.png",
+          128: "src/img/icons/icon128.png",
+        }
+      : {
+          16: "src/img/icons/icon16-disabled.png",
+          48: "src/img/icons/icon48-disabled.png",
+          128: "src/img/icons/icon128-disabled.png",
+        },
+  });
+});
