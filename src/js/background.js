@@ -4,6 +4,10 @@
  */
 chrome.webRequest.onBeforeRequest.addListener(
   function ({ url }) {
+    // Check if the extension is in enabled state
+    const isEnabled = chrome.extension.getBackgroundPage().enabled;
+    if (!isEnabled) return;
+
     const pinterestBlock = "-site:pinterest.*";
 
     // Get the original search query

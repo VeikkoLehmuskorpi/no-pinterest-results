@@ -1,11 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const stateElem = document.querySelector("#state");
   const toggleBtn = document.querySelector("#toggle");
 
-  // Update state label
-  const updateStateLabel = () => {
+  // Update checkbox state
+  const updateCheckboxState = () => {
     const isEnabled = chrome.extension.getBackgroundPage().enabled;
-    stateElem.textContent = isEnabled ? "Enabled" : "Disabled";
     toggleBtn.checked = isEnabled;
   };
 
@@ -13,12 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleExtensionState = (isEnabled) => {
     chrome.extension.getBackgroundPage().enabled = isEnabled ? true : false;
 
-    updateStateLabel();
+    updateCheckboxState();
   };
 
-  // Set the initial state label
-  updateStateLabel();
+  // Set the initial checkbox state
+  updateCheckboxState();
 
+  // Toggle the extension state on click
   toggleBtn.addEventListener("click", () => {
     toggleExtensionState(toggleBtn.checked);
   });
