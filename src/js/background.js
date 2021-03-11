@@ -52,12 +52,10 @@ chrome.browserAction.onClicked.addListener(function (_tab) {
       ? {
           16: "src/img/icons/icon16.png",
           48: "src/img/icons/icon48.png",
-          128: "src/img/icons/icon128.png",
         }
       : {
           16: "src/img/icons/icon16-disabled.png",
           48: "src/img/icons/icon48-disabled.png",
-          128: "src/img/icons/icon128-disabled.png",
         },
   });
 });
