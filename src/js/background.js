@@ -5,7 +5,12 @@
 chrome.webRequest.onBeforeRequest.addListener(
   function ({ url }) {
     // Check if the extension is in enabled state
-    const isEnabled = chrome.extension.getBackgroundPage().enabled;
+    let isEnabled = chrome.extension.getBackgroundPage().enabled;
+    // Value is undefined after installation/browser restart, initialize
+    if (isEnabled === undefined) {
+      toggleExtensionState();
+      isEnabled = true;
+    }
     if (!isEnabled) return;
 
     const pinterestBlock = '-site:pinterest.*';
@@ -41,6 +46,13 @@ chrome.webRequest.onBeforeRequest.addListener(
  * Toggles the extension state when the browser action icon is clicked
  */
 chrome.browserAction.onClicked.addListener(function (_tab) {
+  toggleExtensionState();
+});
+
+/**
+ * Toggles the extension state
+ */
+const toggleExtensionState = () => {
   chrome.extension.getBackgroundPage().enabled = !chrome.extension.getBackgroundPage()
     .enabled;
   const isEnabled = chrome.extension.getBackgroundPage().enabled;
@@ -58,4 +70,4 @@ chrome.browserAction.onClicked.addListener(function (_tab) {
           48: 'src/img/icons/icon48-disabled.png',
         },
   });
-});
+};
