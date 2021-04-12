@@ -4,6 +4,7 @@
     "persistent": true,
     "scripts": ["src/js/background.js"]
   },
+  "browser_action": {},
   "description": "Blocks Google search results from Pinterest",
   "homepage_url": "https://github.com/VeikkoLehmuskorpi/no-pinterest-results",
   "icons": {
@@ -11,7 +12,6 @@
     "48": "src/img/icons/icon48.png",
     "128": "src/img/icons/icon128.png"
   },
-  "browser_action": {},
   "manifest_version": 2,
   "name": "No Pinterest Results",
   "permissions": [
